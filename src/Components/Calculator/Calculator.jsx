@@ -5,15 +5,22 @@ import CalculatorButtons from "./CalculatorButtons";
 
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState("");
+  const [resultDisplayed, setResultDisplayed] = useState(false);
 
   const handleButtonClick = (value) => {
-    setDisplayValue((prevDisplayValue) => prevDisplayValue + value);
+    if (resultDisplayed) {
+      setDisplayValue(value);
+      setResultDisplayed(false);
+    } else {
+      setDisplayValue((prevDisplayValue) => prevDisplayValue + value);
+    }
   };
 
   const calculateResult = () => {
     try {
       const result = eval(displayValue);
       setDisplayValue(result.toString());
+      setResultDisplayed(true);
     } catch (error) {
       setDisplayValue("Error");
     }
@@ -21,6 +28,7 @@ const Calculator = () => {
 
   const clearDisplay = () => {
     setDisplayValue("");
+    setResultDisplayed(false);
   };
 
   return (
