@@ -3,10 +3,12 @@ import "./style.css";
 import CalculatorDisplay from "./CalculatorDisplay";
 import CalculatorButtons from "./CalculatorButtons";
 
+// parent
 const Calculator = () => {
   const [displayValue, setDisplayValue] = useState("");
   const [resultDisplayed, setResultDisplayed] = useState(false);
 
+  // klik button
   const handleButtonClick = (value) => {
     if (resultDisplayed) {
       setDisplayValue(value);
@@ -16,6 +18,7 @@ const Calculator = () => {
     }
   };
 
+  // kalkulasi hasil
   const calculateResult = () => {
     try {
       const result = eval(displayValue);
@@ -26,6 +29,7 @@ const Calculator = () => {
     }
   };
 
+  // reset display
   const clearDisplay = () => {
     setDisplayValue("");
     setResultDisplayed(false);
